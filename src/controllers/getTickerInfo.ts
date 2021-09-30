@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
 export function getTickerInfo(_req: Request, res: Response): void {
-  console.log(`{"unknown_route": "${_req.url}"}`);
-  res.sendStatus(403);
+  console.log(`{"getTickerInfo": "${_req.url}"}`);
+  res.status(200).json({ name: 'Get Ticket Info!' });
 }
