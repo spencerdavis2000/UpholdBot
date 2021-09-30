@@ -9,14 +9,13 @@ const app: Application = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-    res.header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-    res.header('Server', '');
-    res.header('server', '');
-    next();
-  });
+  res.header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  res.header('Server', '');
+  res.header('server', '');
+  next();
+});
 
-
-  app.use(routes);
+app.use(routes);
 app.use(errorCatchAllHandler);
 
 export default app;
