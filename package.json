@@ -1,0 +1,109 @@
+{
+  "name": "@spencer/upholdbot",
+  "version": "1.0.0",
+  "description": "A price bot alert tool using Uphold Api",
+  "main": "dist/local.js",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "test --collect-coverage",
+    "build": "tsc -p tsconfig.json",
+    "start": "node .",
+    "lint": "eslint . --ext .ts",
+    "lintfix": "eslint . --ext .ts --fix"
+  },
+  "author": "Spencer Davis",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-fetch": "^3.0.0",
+    "serverless-http": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.10.2",
+    "@types/node-fetch": "^3.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.2.4",
+    "jest-junit": "^12.3.0",
+    "jest-standard-reporter": "^2.0.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    "roots": [
+      "./"
+    ],
+    "preset": "ts-jest",
+    "testMatch": [
+      "tests/*.ts",
+      "tests/**/*.[t]s?(x)",
+      "**/?(*.)+(spec|test).[t]s?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "dist/"
+    ],
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "coverageReporters": [
+      "json",
+      "text",
+      "cobertura",
+      "html"
+    ],
+    "reporters": [
+      "jest-standard-reporter",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "coverage",
+          "outputName": "junit.xml",
+          "classNameTemplate": "{classname}-{title}",
+          "titleTemplate": "{classname}-{title}",
+          "ancestorSeparator": " › ",
+          "usePathForSuiteName": "true"
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "printWidth": 90
+        }
+      ],
+      "complexity": [
+        "error",
+        10
+      ]
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ]
+  }
+}
